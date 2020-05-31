@@ -35,10 +35,33 @@ export default function App() {
       index: i,
       title: possibleProducts[roll(0, possibleProducts.length)],
       price: roll(1, 10, 1).toFixed(2),
+      weight: roll(6, 20, 1).toFixed(2),
       count: roll(1, 6)
     };
   });
-  console.log(products);
+  // console.log(products);
+
+  let cartTotal = products
+    .reduce(function(accumulator, product) {
+      console.log(accumulator, product);
+      return accumulator + parseFloat(product.price) * product.count;
+    }, 0)
+    .toFixed(2);
+
+  console.log(cartTotal);
+
+  let totalWeight = products.reduce(function(accumulator, product) {
+    return accumulator + parseFloat(product.weight) * product.count;
+  }, 0);
+  console.log(totalWeight);
+
+  let taxRate = roll(5, 9, 1).toFixed(2);
+  function taxed(value) {
+    return (taxRate / 100) * value + parseFloat(value);
+  }
+
+  let taxedTotal = taxed(cartTotal);
+  console.log(taxedTotal);
 
   let productsElement = document.getElementById("Products");
   let cartHtml = "";
@@ -50,7 +73,7 @@ export default function App() {
     </div>`;
   });
 
-  productsElement.innerHTML = cartHtml;
+  //productsElement.innerHTML = cartHtml;
 
   return (
     <div className="App">
