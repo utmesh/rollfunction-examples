@@ -1,0 +1,44 @@
+* {
+  --headerFontSize: 2rem;
+  --headerPadding: 0.5rem;
+  --footerFontSize: 1rem;
+  --footerPadding: 1rem;
+}
+header {
+  background-color: lightgreen;
+  text-align: center;
+  font-size: --headerFontSize;
+  padding: --headerPadding;
+}
+
+footer {
+  background-color: lightgreen;
+  text-align: center;
+  font-size: var(--footerFontSize);
+  padding: --footerPadding;
+}
+
+main {
+  background-color: lightblue;
+  height: calc(
+    100vh - var(--headerFontSize) -
+      var(
+        2 * (--headerPadding) - var(--footerFontSize) -
+          var(2 * (--footerFontSize))
+      )
+  );
+}
+
+.product {
+  border: 0.1rem solid black;
+  font-size: 1.8rem;
+  display: flex;
+  font-size: 1.8rem;
+  padding: 0.5rem;
+  margin: 0.4rem;
+  background-color: lightcoral;
+}
+
+.product div {
+  width: calc(100% / 3);
+}
